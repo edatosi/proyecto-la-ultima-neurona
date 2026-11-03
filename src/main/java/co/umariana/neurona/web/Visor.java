@@ -7,25 +7,51 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import co.umariana.neurona.modelo.Objeto;
+
 /**
- * GET /visor  (tarea de SERVLETS)
+ * GET /visor
  *
- * <p>Contrato (las pruebas lo revisan):
- * <ul>
- *   <li>Parámetro {@code accion}: {@code "siguiente"} usa {@code Contexto.servicio().siguiente()},
- *       {@code "anterior"} usa {@code anterior()}; sin parámetro (o con otro valor) usa {@code actual()}.</li>
- *   <li>Pone el objeto resultante (puede ser {@code null}) en el atributo {@code "objeto"} y la cantidad
- *       total en {@code "total"}.</li>
- *   <li>Reenvía a {@code /WEB-INF/vistas/visor.jsp}, que debe mostrar el objeto, un visor
- *       {@code <img>} (los archivos están en {@code media/}) y los botones Anterior / Siguiente.</li>
- * </ul>
+ * Permite recorrer los objetos registrados.
  */
 @WebServlet("/visor")
 public class Visor extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO (SERVLETS)
-        throw new UnsupportedOperationException("TODO: Visor.doGet()");
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+
+        // 1. Obtener la acción solicitada
+        String accion = req.getParameter("accion");
+
+        // 2. Obtener el servicio
+        co.umariana.neurona.modelo.ServicioObjetos servicio =
+                Contexto.servicio();
+
+        // 3. Obtener el objeto según la acción
+        Objeto objeto;
+
+        if ("siguiente".equals(accion)) {
+
+            objeto = servicio.siguiente();
+
+        } else if ("anterior".equals(accion)) {
+
+            objeto = servicio.anterior();
+
+        } else {
+
+            objeto = servicio.actual();
+        }
+
+        // 4. Enviar el objeto a la página
+        req.setAttribute("objeto", objeto);
+
+        // 5. Enviar la cantidad total
+        req.setAttribute("total", servicio.total());
+
+        // 6. Reenviar a la vista
+        req.getRequestDispatcher("/WEB-INF/vistas/visor.jsp")
+                .forward(req, resp);
     }
 }
