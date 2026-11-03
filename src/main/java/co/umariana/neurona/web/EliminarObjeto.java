@@ -8,17 +8,24 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * POST /eliminar  (tarea de SERVLETS)
+ * POST /eliminar (tarea de SERVLETS)
  *
- * <p>Contrato: toma el parámetro {@code codigo}, llama a {@code Contexto.servicio().eliminar(codigo)}
- * y redirige a {@code "listar"}.
+ * Elimina un objeto del Neuronario.
  */
 @WebServlet("/eliminar")
 public class EliminarObjeto extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO (SERVLETS)
-        throw new UnsupportedOperationException("TODO: EliminarObjeto.doPost()");
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+
+        // 1. Obtener el código del objeto
+        String codigo = req.getParameter("codigo");
+
+        // 2. Eliminar el objeto mediante el servicio
+        Contexto.servicio().eliminar(codigo);
+
+        // 3. Redireccionar al listado
+        resp.sendRedirect("listar");
     }
 }
