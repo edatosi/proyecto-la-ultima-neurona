@@ -1,0 +1,5 @@
+# Catálogo de imágenes que ya vienen en el proyecto (carpeta src/main/webapp/media).
+# Formato: codigo;titulo;categoria;caos;tamanoCm;descripcion;archivo;autor
+O001;Carro rojo;Vehículo;6;450.0;Se pierde en el parqueadero y nunca más lo encuentra;car.webp;pngmaker.io
+O002;Pollo;Animal;9;40.0;Cruzó la calle y nadie sabe por qué;chicken.png;pngtree.com
+O003;Árbol;Planta;2;300.0;El único objeto que no genera caos: solo está ahí;tree.png;clipartpng.com
