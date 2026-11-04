@@ -71,7 +71,7 @@ public class Objeto {
     }
 
     public String getCodigo() { return codigo; }
-    public String getTitulo() { return titulo; }
+    public String getTitulo() { return titulo; } 
     public String getCategoria() { return categoria; }
     public int getCaos() { return caos; }
     public double getTamanoCm() { return tamanoCm; }
