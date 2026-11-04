@@ -3,7 +3,11 @@ package co.umariana.neurona.persistencia;
 import co.umariana.neurona.modelo.Objeto;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,13 +36,61 @@ public class RepositorioTxt implements Repositorio {
 
     @Override
     public List<Objeto> cargar() throws IOException {
-        // TODO (PERSISTENCIA)
-        throw new UnsupportedOperationException("TODO: cargar()");
+        if (Files.notExists(archivo)) {
+            return new ArrayList<>();
+        }
+
+        List<Objeto> objetos = new ArrayList<>();
+        for (String linea : Files.readAllLines(archivo, StandardCharsets.UTF_8)) {
+            if (linea.isBlank()) {
+                continue;
+            }
+
+            String[] campos = linea.split(";", -1);
+            if (campos.length != 7) {
+                continue;
+            }
+
+            try {
+                objetos.add(new Objeto(
+                        campos[0],
+                        campos[1],
+                        campos[2],
+                        Integer.parseInt(campos[3]),
+                        Double.parseDouble(campos[4]),
+                        campos[5],
+                        campos[6]));
+            } catch (NumberFormatException e) {
+                // Una línea con valores numéricos inválidos no impide cargar las demás.
+            }
+        }
+        return objetos;
     }
 
     @Override
     public void guardar(List<Objeto> objetos) throws IOException {
-        // TODO (PERSISTENCIA)
-        throw new UnsupportedOperationException("TODO: guardar()");
+        Path carpeta = archivo.getParent();
+        if (carpeta != null) {
+            Files.createDirectories(carpeta);
+        }
+
+        List<String> lineas = objetos.stream()
+                .map(objeto -> String.join(";",
+                        objeto.getCodigo(),
+                        objeto.getTitulo(),
+                        objeto.getCategoria(),
+                        Integer.toString(objeto.getCaos()),
+                        Double.toString(objeto.getTamanoCm()),
+                        objeto.getDescripcion(),
+                        objeto.getArchivo()))
+                .toList();
+
+        Files.write(
+                archivo,
+                lineas,
+                StandardCharsets.UTF_8,
+                StandardOpenOption.CREATE,
+                StandardOpenOption.TRUNCATE_EXISTING,
+                StandardOpenOption.WRITE);
     }
 }
