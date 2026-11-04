@@ -17,7 +17,7 @@ public class Objeto {
     private final String archivo;
 
     public Objeto(String codigo, String titulo, String categoria, int caos,
-                   double tamanoCm, String descripcion, String archivo) {
+                double tamanoCm, String descripcion, String archivo) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.categoria = categoria;
@@ -39,9 +39,35 @@ public class Objeto {
      *       ni saltos de línea.</li>
      * </ul>
      */
-    public void validar() {
-        // TODO (MODELO): implementar las reglas descritas arriba.
-        throw new UnsupportedOperationException("TODO: validar()");
+        public void validar() {
+        validarTexto("El código", codigo, true);
+        validarTexto("El título", titulo, true);
+        validarTexto("La categoría", categoria, true);
+        validarTexto("El archivo", archivo, true);
+        validarTexto("La descripción", descripcion, false);
+
+        if (caos < 1 || caos > 10) {
+            throw new IllegalArgumentException("El caos debe estar entre 1 y 10, pero es " + caos);
+        }
+        if (Double.isNaN(tamanoCm) || tamanoCm <= 0) {
+            throw new IllegalArgumentException("El tamaño debe ser mayor que 0, pero es " + tamanoCm);
+        }
+    }
+
+    /** Revisa un texto: nulo, en blanco (si es obligatorio), ';' y saltos de línea. */
+    private static void validarTexto(String nombre, String valor, boolean obligatorio) {
+        if (valor == null) {
+            throw new IllegalArgumentException(nombre + " no puede ser nulo");
+        }
+        if (obligatorio && valor.isBlank()) {
+            throw new IllegalArgumentException(nombre + " no puede estar en blanco");
+        }
+        if (valor.indexOf(';') >= 0) {
+            throw new IllegalArgumentException(nombre + " no puede contener el carácter ';'");
+        }
+        if (valor.indexOf('\n') >= 0 || valor.indexOf('\r') >= 0) {
+            throw new IllegalArgumentException(nombre + " no puede contener saltos de línea");
+        }
     }
 
     public String getCodigo() { return codigo; }
