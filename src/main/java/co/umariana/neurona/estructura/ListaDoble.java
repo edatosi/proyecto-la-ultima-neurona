@@ -195,5 +195,6 @@ public class ListaDoble<T> implements Lista<T> {
             }
         }
         return actual;
+        
     }
 }
