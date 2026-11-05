@@ -119,7 +119,7 @@ public class GestorObjetos implements ServicioObjetos {
         return lista.actual();
     }
 
-    // ---------- Auxiliares ----------
+    // ---------- Auxiliares ---------
 
     /** Posición del objeto con ese código en la lista, o -1 si no existe. */
     private int indiceDe(String codigo) {
