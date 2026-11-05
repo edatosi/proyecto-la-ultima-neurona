@@ -29,6 +29,9 @@ public class RegistrarObjeto extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
+        // Para que las tildes y la ñ lleguen bien desde el formulario
+        req.setCharacterEncoding("UTF-8");
+
         try {
 
             // 1. Obtener los parámetros enviados por el formulario
@@ -39,8 +42,8 @@ public class RegistrarObjeto extends HttpServlet {
             String archivo = req.getParameter("archivo");
 
             // 2. Convertir los valores numéricos
-            int caos = Integer.parseInt(req.getParameter("caos"));
-            double tamano = Double.parseDouble(req.getParameter("tamano"));
+            int caos = convertirEntero("El caos", req.getParameter("caos"));
+            double tamano = convertirDecimal("El tamaño", req.getParameter("tamano"));
 
             // 3. Crear el objeto
             co.umariana.neurona.modelo.Objeto objeto =
@@ -68,6 +71,24 @@ public class RegistrarObjeto extends HttpServlet {
             // 7. Volver al formulario
             req.getRequestDispatcher("/WEB-INF/vistas/formulario.jsp")
                     .forward(req, resp);
+        }
+    }
+
+    /** Convierte un texto a entero; si no es un número lanza IllegalArgumentException con un mensaje claro. */
+    private static int convertirEntero(String campo, String texto) {
+        try {
+            return Integer.parseInt(texto.trim());
+        } catch (NumberFormatException | NullPointerException e) {
+            throw new IllegalArgumentException(campo + " debe ser un número entero");
+        }
+    }
+
+    /** Convierte un texto a decimal (acepta coma o punto); si no es un número lanza IllegalArgumentException. */
+    private static double convertirDecimal(String campo, String texto) {
+        try {
+            return Double.parseDouble(texto.trim().replace(',', '.'));
+        } catch (NumberFormatException | NullPointerException e) {
+            throw new IllegalArgumentException(campo + " debe ser un número (por ejemplo 2.5)");
         }
     }
 }

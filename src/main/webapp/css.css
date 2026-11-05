@@ -1,0 +1,357 @@
+/* CONFIGURACIÓN GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #172554, #312e81);
+    color: #f1f5f9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ENCABEZADO */
+header {
+    text-align: center;
+    padding: 55px 20px;
+    background: linear-gradient(135deg, #1e3a8a, #4338ca, #6d28d9);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid #38bdf8;
+}
+
+header h1 {
+    font-size: 42px;
+    margin-bottom: 12px;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+}
+
+header p {
+    font-size: 17px;
+    color: #dbeafe;
+}
+
+/* CONTENIDO PRINCIPAL */
+main {
+    width: 90%;
+    max-width: 850px;
+    margin: 50px auto;
+    flex: 1;
+}
+
+main ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+/* TARJETAS */
+main li {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(125, 211, 252, 0.3);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+main li:hover {
+    transform: translateY(-8px);
+    background: rgba(56, 189, 248, 0.15);
+    border-color: #38bdf8;
+    box-shadow: 0 12px 30px rgba(56, 189, 248, 0.2);
+}
+
+/* ENLACES */
+main li a {
+    display: block;
+    padding: 28px 22px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+main li a small {
+    display: block;
+    margin-top: 12px;
+    color: #bfdbfe;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+main li a:hover {
+    color: #7dd3fc;
+}
+
+/* TEXTO INFORMATIVO */
+main > p {
+    margin-top: 35px;
+    padding: 18px;
+    text-align: center;
+    color: #cbd5e1;
+    font-size: 14px;
+    line-height: 1.7;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    border-left: 4px solid #38bdf8;
+}
+
+/* PIE DE PÁGINA */
+footer {
+    text-align: center;
+    padding: 22px;
+    background: #0b1120;
+    color: #94a3b8;
+    font-size: 14px;
+    border-top: 1px solid rgba(125, 211, 252, 0.2);
+}
+
+/* DISEÑO RESPONSIVE */
+@media (max-width: 600px) {
+    header {
+        padding: 40px 15px;
+    }
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    main ul {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        margin: 30px auto;
+    }
+
+    main li a {
+        font-size: 19px;
+    }
+}
+
+/* PÁGINAS INTERNAS (catálogo, objetos, registrar, visor) */
+body.interna main {
+    max-width: 850px;
+}
+
+body.interna main.ancha {
+    max-width: 1100px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 22px;
+    padding: 14px 20px;
+    background: #0b1120;
+    border-bottom: 1px solid rgba(125, 211, 252, 0.2);
+}
+
+nav a {
+    color: #7dd3fc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+body.interna main a {
+    color: #7dd3fc;
+}
+
+body.interna h2 {
+    margin: 28px 0 14px;
+    color: #ffffff;
+}
+
+body.interna article {
+    margin-bottom: 22px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(125, 211, 252, 0.3);
+    border-radius: 18px;
+}
+
+body.interna article h3 small,
+body.interna article h2 small {
+    color: #94a3b8;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+body.interna article p {
+    margin: 8px 0;
+}
+
+body.interna article p span {
+    display: inline-block;
+    margin-right: 8px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(56, 189, 248, 0.18);
+    font-size: 13px;
+}
+
+body.interna article img,
+img.grande {
+    display: block;
+    max-width: 100%;
+    margin: 12px 0;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+img.grande {
+    max-height: 380px;
+    margin: 16px auto;
+}
+
+img.mini {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+article.visor {
+    text-align: center;
+}
+
+p.botones {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+a.boton,
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #38bdf8;
+    color: #0f172a !important;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.boton:hover,
+button:hover {
+    background: #7dd3fc;
+}
+
+button:disabled {
+    background: #475569;
+    color: #cbd5e1 !important;
+    cursor: not-allowed;
+}
+
+button.peligro {
+    background: #f87171;
+}
+
+button.peligro:hover {
+    background: #fca5a5;
+}
+
+/* Tablas */
+.tabla-scroll {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+table.compacta {
+    width: auto;
+    min-width: 320px;
+}
+
+th,
+td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(125, 211, 252, 0.15);
+    vertical-align: middle;
+}
+
+th {
+    background: rgba(56, 189, 248, 0.2);
+}
+
+/* Formulario */
+form.formulario {
+    display: grid;
+    gap: 16px;
+}
+
+form.formulario label {
+    display: grid;
+    gap: 6px;
+    font-weight: bold;
+}
+
+form.formulario input,
+form.formulario textarea {
+    padding: 10px 12px;
+    border: 1px solid rgba(125, 211, 252, 0.4);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #f1f5f9;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+form.formulario input:focus,
+form.formulario textarea:focus {
+    outline: 2px solid #38bdf8;
+}
+
+/* Mensajes */
+p.error,
+p.aviso,
+p.nota,
+p.orden {
+    margin: 12px 0;
+}
+
+p.error {
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: rgba(248, 113, 113, 0.2);
+    border-left: 4px solid #f87171;
+}
+
+p.aviso {
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border-left: 4px solid #38bdf8;
+}
+
+p.nota {
+    color: #94a3b8;
+    font-size: 14px;
+}

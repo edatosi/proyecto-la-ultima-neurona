@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- metadata-complete="true": Jetty no escanea las clases buscando anotaciones (ese escaneo es una causa
+     frecuente de "Error 404 ... Not Available" con ciertas versiones de JDK). Todo se registra aquí. -->
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0" metadata-complete="true">
+
+    <display-name>Neuronario</display-name>
+
+    <listener>
+        <listener-class>co.umariana.neurona.web.AppListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>catalogo</servlet-name>
+        <servlet-class>co.umariana.neurona.web.CatalogoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>catalogo</servlet-name>
+        <url-pattern>/catalogo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>listar</servlet-name>
+        <servlet-class>co.umariana.neurona.web.ListarObjetos</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listar</servlet-name>
+        <url-pattern>/listar</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>registrar</servlet-name>
+        <servlet-class>co.umariana.neurona.web.RegistrarObjeto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registrar</servlet-name>
+        <url-pattern>/registrar</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>eliminar</servlet-name>
+        <servlet-class>co.umariana.neurona.web.EliminarObjeto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>eliminar</servlet-name>
+        <url-pattern>/eliminar</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>visor</servlet-name>
+        <servlet-class>co.umariana.neurona.web.Visor</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>visor</servlet-name>
+        <url-pattern>/visor</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+</web-app>
