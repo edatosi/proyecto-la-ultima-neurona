@@ -4,4 +4,4 @@ O001;Carro rojo;Vehículo;6;450.0;Se pierde en el parqueadero y nunca más lo en
 O002;Pollo;Animal;9;40.0;Cruzó la calle y nadie sabe por qué;chicken.png;pngtree.com
 O003;Árbol;Planta;2;300.0;El único objeto que no genera caos: solo está ahí;tree.png;clipartpng.com
 O004;Saco;Objeto;3;80.0;Guarda de todo y nadie recuerda qué había adentro;saco.png;pngtree.com
-O005;Semilla;Planta;1;1.0;Pequeña, callada y con un gran futuro;semilla.png;clipartpng.com
+O005;Semilla;Planta;1;1.2;Pequeña, callada y con un gran futuro;semilla.png;clipartpng.com
