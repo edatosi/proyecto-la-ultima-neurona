@@ -27,7 +27,7 @@ public class CatalogoServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         out.println("<!DOCTYPE html><html lang=\"es\"><head><meta charset=\"UTF-8\">");
         out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
-        out.println("<title>Catálogo de objetos</title></head><body>");
+        out.println("<title>Catálogo de objetos</title><link rel=\"stylesheet\" href=\"css.css\"></head><body class=\"interna\">");
         out.println("<header><h1>🧠 Neuronario</h1><p>Catálogo de imágenes</p></header>");
         out.println("<nav><a href=\"index.html\">Inicio</a></nav><main>");
         out.println("<h2>Imágenes disponibles</h2>");
