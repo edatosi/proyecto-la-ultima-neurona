@@ -41,7 +41,16 @@ public class RepositorioTxt implements Repositorio {
         }
 
         List<Objeto> objetos = new ArrayList<>();
+        boolean primera = true;
         for (String linea : Files.readAllLines(archivo, StandardCharsets.UTF_8)) {
+            // El Bloc de notas de Windows puede guardar el archivo con una marca invisible (BOM) al inicio;
+            // si no se quita, el primer código quedaría como "\uFEFFO001" y no se reconocería.
+            if (primera) {
+                primera = false;
+                if (linea.startsWith("\uFEFF")) {
+                    linea = linea.substring(1);
+                }
+            }
             if (linea.isBlank()) {
                 continue;
             }

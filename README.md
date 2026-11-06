@@ -52,11 +52,12 @@ Desde una terminal **dentro de la carpeta del proyecto**:
 
 | Acción | Comando |
 |---|---|
-| Iniciar la aplicación web | `./scripts/start.sh` y abrir <http://localhost:8080/> |
+| Iniciar la aplicación web | `./scripts/start.sh` y abrir <http://localhost:8080/> (si el puerto está ocupado, el script usa el siguiente libre y lo muestra) |
+| Cerrar una ejecución que quedó abierta | `./scripts/stop.sh` (o `./scripts/stop.sh 8081` para otro puerto) |
 | Todas las pruebas | `./scripts/test.sh` |
 | Solo las de una tarea | `./scripts/test.sh estructura` (o `modelo`, `persistencia`, `web`) |
 
-La primera vez tarda unos minutos porque descarga lo necesario. Para detener la aplicación pulse `Ctrl + C`. Los datos se guardan en el archivo `objetos.txt` (se crea solo; no se sube a Git).
+La primera vez tarda unos minutos porque descarga lo necesario. Para detener la aplicación pulse `Ctrl + C`. Los datos se guardan en el archivo `objetos.txt` de la raíz del proyecto (una línea por objeto con **7 campos** separados por `;`: `codigo;titulo;categoria;caos;tamanoCm;descripcion;archivo`; se crea solo si no existe).
 
 **¿Cuándo funciona la aplicación completa?** El botón **Agregar** del catálogo necesita las tareas ESTRUCTURA, MODELO y PERSISTENCIA ya mergeadas en `main`; las páginas Lista, Registrar y Visor necesitan además SERVLETS y UI. Mientras falte algo, la aplicación arranca igual y le avisa qué falta.
 
