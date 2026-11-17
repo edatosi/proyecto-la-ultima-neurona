@@ -5,3 +5,5 @@ O002;Pollo;Animal;9;40.0;Cruzó la calle y nadie sabe por qué;chicken.png;pngtr
 O003;Árbol;Planta;2;300.0;El único objeto que no genera caos: solo está ahí;tree.png;clipartpng.com
 O004;Saco;Objeto;3;80.0;Guarda de todo y nadie recuerda qué había adentro;saco.png;pngtree.com
 O005;Semilla;Planta;1;1.2;Pequeña, callada y con un gran futuro;semilla.png;clipartpng.com
+O006;Audífonos Bluetooth;Tecnología;4;18.0;Escucha música con sonido estéreo y sin cables;audifonos.png;OpenClipart
+O007;Termo inoxidable;Objeto;2;25.0;Mantiene tus bebidas frías o calientes durante horas;termo.png;OpenClipart
